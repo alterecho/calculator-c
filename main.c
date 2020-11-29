@@ -3,21 +3,14 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include "OpType.h"
+#include "common.h"
 
 static int add(int n1, int n2);
 static int subtract(int, int);
 static int multiply(int, int);
 static int divide(int, int);
 
-static inline void fail(bool condition, const char *message) {
-    if (condition) {
-        printf("\n%s", message);
-        exit(1);
-    }
-}
-
 int main(int argc, char **argv) {
-    
     for(int i = 0; i < argc; i++) {
         printf("arg: %s", argv[i]);
     }
