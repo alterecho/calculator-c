@@ -15,6 +15,8 @@ int main(int argc, char **argv) {
         printf("arg: %s", argv[i]);
     }
     fail(argc < 2, "NO ARGS SUPPLIED");
+
+    //operation input
     const char *ip_op = argv[1];
     OpType opType = opTypeFromString(ip_op);
     
@@ -32,10 +34,16 @@ int main(int argc, char **argv) {
             fail(argc < 4, "divide needs 2 arguments");
             break;
         default:
-            fail(1, "unknown operation %s");
-            break;
+        {
+            const char *prefix = "unknown operation ";
+            size_t len = strlen(prefix) + 1 /* space */ + strlen(ip_op);
+            char *msg = (char *)malloc(sizeof(char) * len);
+            snprintf(msg, sizeof(msg), " %s", ip_op);
+            fail(1, msg);
+        }
+        break;
     }
-	return 0;
+    return 0;
 }
 
 static int add(int n1, int n2) {
