@@ -2,38 +2,12 @@
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "OpType.h"
 
 static int add(int n1, int n2);
 static int subtract(int, int);
 static int multiply(int, int);
 static int divide(int, int);
-
-#define OP_ADD "add"
-#define OP_SUBTRACT "subtract"
-#define OP_MULTIPLY "multiply"
-#define OP_DIVIDE "divide"
-
-typedef enum {
-    op_unknown = -1,
-    op_add = 0,
-    op_subtract,
-    op_multiply,
-    op_divide,
-} OpType;
-
-/// return OpType from string (arg innto program)
-static inline OpType opTypeFromString(const char *arg) {
-    if(strcmp(arg, OP_ADD) == 0) {
-        return op_add;
-    } else if(strcmp(arg, OP_SUBTRACT) == 0) {
-        return op_subtract;
-    } else if(strcmp(arg, OP_MULTIPLY) == 0) {
-        return op_multiply;
-    } else if(strcmp(arg, OP_DIVIDE) == 0) {
-        return op_divide;
-    }
-    return op_unknown;
-}
 
 static inline void fail(bool condition, const char *message) {
     if (condition) {
