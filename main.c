@@ -35,10 +35,11 @@ int main(int argc, char **argv) {
             break;
         default:
         {
-            const char *prefix = "unknown operation ";
+            const char *prefix = "unknown operation\0";
             size_t len = strlen(prefix) + 1 /* space */ + strlen(ip_op);
-            char *msg = (char *)malloc(sizeof(char) * len);
-            snprintf(msg, sizeof(msg), " %s", ip_op);
+            size_t size = sizeof(char) * len;
+            char *msg = (char *)malloc(size);
+            snprintf(msg, 100, "%s %s", prefix, ip_op);
             fail(1, msg);
         }
         break;
