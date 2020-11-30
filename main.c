@@ -12,13 +12,26 @@ static int divide(int, int);
 
 int main(int argc, char **argv) {
     for(int i = 0; i < argc; i++) {
-        printf("arg: %s", argv[i]);
+        printf("\narg: %s, count: %lu", argv[i], strlen(argv[i]));
     }
+    printf("\n");
     fail(argc < 2, "NO ARGS SUPPLIED");
 
     //operation input
     const char *ip_op = argv[1];
     OpType opType = opTypeFromString(ip_op);
+
+    jmp_buf exception;
+    int indexOfEmptyArg = -1;
+
+    const char **args = NULL;
+    if (setjmp(exception)) {
+        printf("\nargument %d is empty", indexOfEmptyArg);
+        exit(1);
+    } else {
+        const char **args = allocGetArgs(argc, argv, &exception, &indexOfEmptyArg);
+    }
+    
     
     switch (opType) {
         case op_add:
