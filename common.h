@@ -34,7 +34,6 @@ static inline const char ** allocGetArgs(int argc, char **argv, jmp_buf *jmp, in
                 longjmp(*jmp, EXC_EMPTY_VALUE);
             }
         }
-
         size_t size = len + 1;
         char *arg = (char *)malloc(size);
         arg = strcpy(arg, argv[i]);
