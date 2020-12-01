@@ -13,7 +13,7 @@ static inline void fail(bool condition, const char *message) {
 // allocates and return an array of all the strings in the argv
 // jmp: jumps to the jmp_buf if any of the strings in argv is empty (throw)
 // indexOfEmptyArg: sets the index of the arg 
-static inline (const char **) allocGetArgs(int argc, char **argv, jmp_buf *jmp, int *indexOfEmptyArg) {    
+static inline const char ** allocGetArgs(int argc, char **argv, jmp_buf *jmp, int *indexOfEmptyArg) {    
     char **args = (char **)malloc(sizeof(char *) * argc);
     for (int i = 0; i < argc; i++) {
         size_t len = strlen(argv[i]);
