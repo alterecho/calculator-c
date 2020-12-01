@@ -10,6 +10,15 @@ static inline void fail(bool condition, const char *message) {
     }
 }
 
+// print array of strings 'argv' whose size is 'argc'
+static inline void printArgs(int argc, const char **argv) {
+    printf("dhc: %d", argc);
+    for (int i = 0; i < argc; i++) {
+        printf("\narg[%d]: %s", i, argv[i]);
+    }
+    printf("\n");
+}
+
 // allocates and return an array of all the strings in the argv
 // jmp: jumps to the jmp_buf if any of the strings in argv is empty (throw)
 // indexOfEmptyArg: sets the index of the arg 

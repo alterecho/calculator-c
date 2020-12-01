@@ -11,10 +11,7 @@ static int multiply(int, int);
 static int divide(int, int);
 
 int main(int argc, char **argv) {
-    for(int i = 0; i < argc; i++) {
-        printf("\narg: %s, count: %lu", argv[i], strlen(argv[i]));
-    }
-    printf("\n");
+    printArgs(argc, (const char **) argv);
     fail(argc < 2, "NO ARGS SUPPLIED");
 
     //operation input
