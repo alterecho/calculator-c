@@ -1,15 +1,15 @@
 #import "math.h"
 
-double add(double n1, double n2) {
+double add(int n1, int n2) {
 	int result;
-	// __asm__ __volatile__ (
-	// "MOV %1, %%eax;\n\t"
-	// "ADD %2, %%eax;\n\t"
-	// "MOV %%eax, %0;\n\t"
-	// : "=d"(result)
-	// : "b" (n1), "c"(n2)
-	// : "%eax"
-	// );
+	__asm__ __volatile__ (
+	"movl %1, %%eax;\n\t"
+	"addl %2, %%eax;\n\t"
+	"movl %%eax, %0;\n\t"
+	: "=d"(result)
+	: "b" (n1), "c"(n2)
+	: "%eax"
+	);
 	return result;
 }
 
