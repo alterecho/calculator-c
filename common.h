@@ -2,6 +2,7 @@
 
 #define EXC_EMPTY_VALUE 1
 
+// exits current process and prints 'message' if 'condition' is true
 static inline void fail(bool condition, const char *message) {
     if (condition) {
         printf("\n%s", message);
@@ -9,7 +10,10 @@ static inline void fail(bool condition, const char *message) {
     }
 }
 
-static inline const char **allocGetArgs(int argc, char **argv, jmp_buf *jmp, int *indexOfEmptyArg) {    
+// allocates and return an array of all the strings in the argv
+// jmp: jumps to the jmp_buf if any of the strings in argv is empty (throw)
+// indexOfEmptyArg: sets the index of the arg 
+static inline (const char **) allocGetArgs(int argc, char **argv, jmp_buf *jmp, int *indexOfEmptyArg) {    
     char **args = (char **)malloc(sizeof(char *) * argc);
     for (int i = 0; i < argc; i++) {
         size_t len = strlen(argv[i]);
