@@ -13,14 +13,13 @@ double add(int n1, int n2) {
 	return result;
 }
 
-double subtract(double n1, double n2) {
+int subtract(int n1, int n2) {
 	int result;
-	// __asm__ __volatile__ (
-	
-	// "SUB %1, %0;\n\t"
-	// : "=c" (result)
-	// : "a" (n2), "b" (n1)
-	// );
+	__asm__ __volatile__ (
+	"subl %%ebx, %%eax;\n\t"
+	: "=a" (result)
+	: "b" (n2), "a" (n1)
+	);
 	return result;
 }
 
