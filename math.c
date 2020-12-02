@@ -25,7 +25,13 @@ int subtract(int n1, int n2) {
 }
  
 int multiply(int n1, int n2) {
-	return 0;
+	int result;
+	__asm__ __volatile__ (
+		"mul %%ebx"
+		: "=a" (result)
+		: "a" (n2), "b"(n1)
+	);
+	return result;
 }
 
 int divide(int n1, int n2) {
