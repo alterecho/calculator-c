@@ -7,9 +7,9 @@
 #import "math.h"
 
 static inline void opAdd(int n1, int n2);
-static inline void opSubtract();
-static inline void opMultiply();
-static inline void opDivide();
+static inline void opSubtract(int n1, int n2);
+static inline void opMultiply(int n1, int n2);
+static inline void opDivide(int n1, int n2);
 
 
 int main(int argc, char **argv) {
@@ -34,11 +34,11 @@ int main(int argc, char **argv) {
     switch (opType) {
         case op_add:
             fail(argc < 4, "add needs 2 arguments");
-            opAdd(atoi(argv[2]), atof(argv[3]));
+            opAdd(atoi(argv[2]), atoi(argv[3]));
             break;
         case op_subtract:
             fail(argc < 4, "subtract needs 2 arguments");
-            opSubtract(atof(argv[2]), atof(argv[3]));
+            opSubtract(atof(argv[2]), atoi(argv[3]));
             break;
         case op_multiply:
             fail(argc < 4, "multiply needs 2 arguments");
@@ -67,18 +67,18 @@ static inline void opAdd(int n1, int n2) {
     printf("\n%d + %d = %d", n1, n2, res);
 }
 
-static inline void opSubtract(double n1, double n2) {
-    double res = subtract(n1, n2);
-    printf("\n%f - %f = %f", n1, n2, res);
+static inline void opSubtract(int n1, int n2) {
+    int res = subtract(n1, n2);
+    printf("\n%d - %d = %d", n1, n2, res);
 }
 
-static inline void opMultiply(double n1, double n2) {
-    double res = multiply(n1, n2);
-    printf("\n%f X %f = %f", n1, n2, res);
+static inline void opMultiply(int n1, int n2) {
+    int res = multiply(n1, n2);
+    printf("\n%d X %d = %d", n1, n2, res);
 }
 
-static inline void opDivide(double n1, double n2) {
-    double res = divide(n1, n2);
-    printf("\n%f / %f = %f", n1, n2, res);
+static inline void opDivide(int n1, int n2) {
+    int res = divide(n1, n2);
+    printf("\n%d / %d = %d", n1, n2, res);
 }
 
