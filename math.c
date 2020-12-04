@@ -35,5 +35,16 @@ int multiply(int n1, int n2) {
 }
 
 int divide(int n1, int n2) {
-	return 0;
+	int result, quotient, remainder, eax, ebx, ecx, edx;
+	__asm__ __volatile__ ( 
+		"movl $0x0, %%edx\n\t"
+		"div %%ebx"
+		: "=a" (quotient), "=d" (remainder), "=a" (eax), "=b" (ebx), "=c" (ecx), "=d" (edx)
+		: "a" (n1), "b" (n2)
+	);
+
+	printf("\nquotient: %d, remainder: %d", quotient, remainder);
+	printf("r\nesult: %d", result);
+	printf("\neax: %d, \nebx: %d, \necx: %d, \nedx: %d", eax, ebx, ecx, edx);
+	return quotient;
 }
