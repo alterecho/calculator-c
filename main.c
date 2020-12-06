@@ -6,7 +6,7 @@
 #include "common.h"
 #import "math.h"
 
-static inline void opAdd(int n1, int n2);
+static inline void opAdd(char *v1, char *v2);
 static inline void opSubtract(int n1, int n2);
 static inline void opMultiply(int n1, int n2);
 static inline void opDivide(int n1, int n2);
@@ -34,7 +34,7 @@ int main(int argc, char **argv) {
     switch (opType) {
         case op_add:
             fail(argc < 4, "add needs 2 arguments");
-            opAdd(atoi(argv[2]), atoi(argv[3]));
+            opAdd(argv[2], argv[3]);
             break;
         case op_subtract:
             fail(argc < 4, "subtract needs 2 arguments");
@@ -62,9 +62,9 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-static inline void opAdd(int n1, int n2) {
-    int res = add(n1, n2);
-    printf("\n%d + %d = %d", n1, n2, res);
+static inline void opAdd(char *v1, char *v2) {
+    int res = fadd(atoi(v1), atoi(v2));
+    printf("\n%s + %s = %d", v1, v2, res);
 }
 
 static inline void opSubtract(int n1, int n2) {

@@ -14,6 +14,19 @@ int add(int n1, int n2) {
 	return result;
 }
 
+double fadd(double n1, double n2) {
+	double res = 2.0;
+	__asm__ __volatile__(
+		"fldl %1\n\t"
+		"faddl %2\n\t"
+		// "fldl %2\n\t" "fadd %%st(1)\n\t" /* another form (comment out previious forms) */
+		: "=t" (res) /* t -- top of stack */
+		: "m" (n1), "m" (n2) /* m -- memory */
+	);
+	
+	return res;
+}
+
 int subtract(int n1, int n2) {
 	int result;
 	__asm__ __volatile__ (
