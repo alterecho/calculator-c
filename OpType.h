@@ -1,9 +1,20 @@
 #include <string.h>
 
+
+/*
+suffix:
+    _S -- short variant
+*/
 #define OP_ADD "add"
+
 #define OP_SUBTRACT "subtract"
+#define OP_SUBTRACT_S "sub"
+
 #define OP_MULTIPLY "multiply"
+#define OP_MULTIPLY_S "mul"
+
 #define OP_DIVIDE "divide"
+#define OP_DIVIDE_S "div" 
 
 typedef enum {
     op_unknown = -1,
