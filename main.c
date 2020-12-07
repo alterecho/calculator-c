@@ -73,7 +73,7 @@ static inline void opSubtract(int n1, int n2) {
 }
 
 static inline void opMultiply(int n1, int n2) {
-    int res = multiply(n1, n2);
+    int res = multiplyf(n1, n2);
     printf("\n%d X %d = %d", n1, n2, res);
 }
 

@@ -45,7 +45,6 @@ double subtractf(double n1, double n2) {
 		: "=t" (res)
 		: "g" (n1), "g" (n2)
 	);
-	printf("\nsubtractf red: %f", res);
 	return res;
 }
  
@@ -61,6 +60,12 @@ int multiply(int n1, int n2) {
 
 double multiplyf(double n1, double n2) {
 	double res = 0;
+	__asm__ __volatile__ (
+		"fldl %1\n\t"
+		"fmull %2\n\t"
+		: "=t" (res)
+		: "g" (n1), "g" (n2)
+	);
 	return res;
 }
 
