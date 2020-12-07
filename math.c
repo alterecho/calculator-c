@@ -19,7 +19,7 @@ double addf(double n1, double n2) {
 	__asm__ __volatile__(
 		"fldl %1\n\t"
 		"faddl %2\n\t"
-		// "fldl %2\n\t" "fadd %%st(1)\n\t" /* another form (comment out previious forms) */
+		/* "fldl %2\n\t" "fadd %%st(1)\n\t" */ // another form (comment out previious forms)
 		: "=t" (res) /* t -- top of stack */
 		: "m" (n1), "m" (n2) /* m -- memory */
 	);
@@ -39,6 +39,13 @@ int subtract(int n1, int n2) {
 
 double subtractf(double n1, double n2) {
 	double res = 0;
+	__asm__ __volatile__ (
+		"fldl %1\n\t"
+		"fsubl %2\n\t"
+		: "=t" (res)
+		: "g" (n1), "g" (n2)
+	);
+	printf("\nsubtractf red: %f", res);
 	return res;
 }
  

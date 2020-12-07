@@ -68,7 +68,7 @@ static inline void opAdd(char *v1, char *v2) {
 }
 
 static inline void opSubtract(int n1, int n2) {
-    int res = subtract(n1, n2);
+    int res = subtractf(n1, n2);
     printf("\n%d - %d = %d", n1, n2, res);
 }
 
