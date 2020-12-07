@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 }
 
 static inline void opAdd(char *v1, char *v2) {
-    int res = fadd(atoi(v1), atoi(v2));
+    int res = addf(atoi(v1), atoi(v2));
     printf("\n%s + %s = %d", v1, v2, res);
 }
 

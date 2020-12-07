@@ -14,7 +14,7 @@ int add(int n1, int n2) {
 	return result;
 }
 
-double fadd(double n1, double n2) {
+double addf(double n1, double n2) {
 	double res = 2.0;
 	__asm__ __volatile__(
 		"fldl %1\n\t"
@@ -36,6 +36,11 @@ int subtract(int n1, int n2) {
 	);
 	return result;
 }
+
+double subtractf(double n1, double n2) {
+	double res = 0;
+	return res;
+}
  
 int multiply(int n1, int n2) {
 	int result;
@@ -45,6 +50,11 @@ int multiply(int n1, int n2) {
 		: "a" (n2), "b"(n1)
 	);
 	return result;
+}
+
+double multiplyf(double n1, double n2) {
+	double res = 0;
+	return res;
 }
 
 int divide(int n1, int n2) {
@@ -57,4 +67,9 @@ int divide(int n1, int n2) {
 	);
 	result = quotient;
 	return quotient;
+}
+
+double dividef(double n1, double n2) {
+	double res = 0;
+	return res;
 }
