@@ -78,7 +78,7 @@ static inline void opMultiply(int n1, int n2) {
 }
 
 static inline void opDivide(int n1, int n2) {
-    int res = divide(n1, n2);
+    int res = dividef(n1, n2);
     printf("\n%d / %d = %d", n1, n2, res);
 }
 

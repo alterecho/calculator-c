@@ -83,5 +83,12 @@ int divide(int n1, int n2) {
 
 double dividef(double n1, double n2) {
 	double res = 0;
+	__asm__ __volatile__ (
+		"fldl %1\n\t"
+		"fdivl %2\n\t"
+		: "=t" (res)
+		: "g" (n1), "g" (n2)
+	);
+	printf("\ndividef red: %f", res);
 	return res;
 }
