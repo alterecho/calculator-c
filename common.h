@@ -1,4 +1,9 @@
+#ifndef COMMON_H
+#define COMMON_H
+
 #include <setjmp.h>
+#include <math.h>
+#include <stdbool.h>
 
 #define EXC_EMPTY_VALUE 1
 
@@ -41,3 +46,16 @@ static inline const char ** allocGetArgs(int argc, char **argv, jmp_buf *jmp, in
     }
     return (const char **)args;
 }
+
+/* determines if number represented by 'arg' is a floating point */
+static inline bool isFloatingPointArg(char *arg) {
+    double fp = atof("arg");
+    return (fabs(fp) != fp);
+}
+
+/* determines if floating point funcs are to be used based on input args */
+static inline bool isFloatingPointOp(char *arg1, char *arg2) {
+    return isFloatingPointArg(arg1) ||  isFloatingPointArg(arg2);
+}
+
+#endif

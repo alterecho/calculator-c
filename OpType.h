@@ -1,5 +1,7 @@
-#include <string.h>
+#ifndef OP_TYPE_H
+#define OP_TYPE_H
 
+#include <string.h>
 
 /*
 suffix:
@@ -25,3 +27,5 @@ typedef enum {
 } OpType;
 
 OpType opTypeFromString(const char *arg);
+
+#endif

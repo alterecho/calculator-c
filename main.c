@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
 #include <stdlib.h>
-#include "OpType.h"
+#include <string.h>
 #include "common.h"
-#import "math.h"
+#include "Operation.h"
+#include "math.h"
 
 static inline void opAdd(char *v1, char *v2);
 static inline void opSubtract(int n1, int n2);
@@ -63,6 +62,7 @@ int main(int argc, char **argv) {
 }
 
 static inline void opAdd(char *v1, char *v2) {
+
     int res = addf(atoi(v1), atoi(v2));
     printf("\n%s + %s = %d", v1, v2, res);
 }

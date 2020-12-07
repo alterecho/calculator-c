@@ -1,6 +1,7 @@
 #ifndef OPERATION_H
 #define OPERATION_H
 
+#include <stdbool.h>
 #include "OpType.h"
 
 // meta data for the program input
